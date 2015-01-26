@@ -5,6 +5,7 @@ import numpy as np
 # Load data by load_iris function from sklearn
 data = load_iris()
 
+# extract data
 features = data['data']
 feature_names = data['feature_names']
 target = data['target']
@@ -25,25 +26,25 @@ virginica_sepal_width = []
 virginica_petal_length = []
 virginica_petal_width = []
 
-# plot data of sepal length  and sepal width
+# put data into each list
 for i in range(len(features[:,0])):
     if target[i] == 0:
         setosa_sepal_length.append(features[i][0])
         setosa_sepal_width.append(features[i][1])
         setosa_petal_length.append(features[i][2])
         setosa_petal_width.append(features[i][3])
-    if target[i] == 1:
+    elif target[i] == 1:
         versicolor_sepal_length.append(features[i][0])
         versicolor_sepal_width.append(features[i][1])
         versicolor_petal_length.append(features[i][2])
         versicolor_petal_width.append(features[i][3])
-    if target[i] == 2:
+    elif target[i] == 2:
         virginica_sepal_length.append(features[i][0])
         virginica_sepal_width.append(features[i][1])
         virginica_petal_length.append(features[i][2])
         virginica_petal_width.append(features[i][3])
 
-# plot for sepal length / sepal width
+# plot sepal length / sepal width
 plt.subplot(231)
 plt.title('sepal length / sepal width')
 plt.xlabel('sepal length')
@@ -53,7 +54,7 @@ plt.plot(versicolor_sepal_length, versicolor_sepal_width, "go", label='versicolo
 plt.plot(virginica_sepal_length, virginica_sepal_width, "bo", label='virginica')
 plt.legend()
 
-# plot for sepal length / petal length
+# plot sepal length / petal length
 plt.subplot(232)
 plt.title('sepal length / petal length')
 plt.xlabel('sepal length')
@@ -63,7 +64,7 @@ plt.plot(versicolor_sepal_length, versicolor_petal_length, "go", label='versicol
 plt.plot(virginica_sepal_length, virginica_petal_length, "bo", label='virginica')
 # plt.legend()
 
-# plot for sepal length / petal width
+# plot sepal length / petal width
 plt.subplot(233)
 plt.title('sepal length / petal width')
 plt.xlabel('sepal length')
@@ -73,7 +74,7 @@ plt.plot(versicolor_sepal_length, versicolor_petal_width, "go", label='versicolo
 plt.plot(virginica_sepal_length, virginica_petal_width, "bo", label='virginica')
 # plt.legend()
 
-# plot for sepal width / petal length
+# plot sepal width / petal length
 plt.subplot(234)
 plt.title('sepal width / petal length')
 plt.xlabel('sepal width')
@@ -83,7 +84,7 @@ plt.plot(versicolor_sepal_width, versicolor_petal_length, "go", label='versicolo
 plt.plot(virginica_sepal_width, virginica_petal_length, "bo", label='virginica')
 # plt.legend()
 
-# plot for sepal width / petal width
+# plot sepal width / petal width
 plt.subplot(235)
 plt.title('sepal width / petal width')
 plt.xlabel('sepal width')
@@ -93,7 +94,7 @@ plt.plot(versicolor_sepal_width, versicolor_petal_width, "go", label='versicolor
 plt.plot(virginica_sepal_width, virginica_petal_width, "bo", label='virginica')
 # plt.legend()
 
-# plot for petal length / petal width
+# plot petal length / petal width
 plt.subplot(236)
 plt.title('petal length / petal width')
 plt.xlabel('petal length')
