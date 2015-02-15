@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from matplotlib import pyplot as plt
 from sklearn.datasets import load_iris
 import numpy as np
@@ -55,3 +57,25 @@ print('Minimum of others: {0}. '.format(min_non_setosa))
 def apply_model(example):
   if example[2] < 2: print 'Iris Setosa'
   else: print 'Iris Virginica or Iris Versicolor'
+
+features = features[~is_setosa]
+labels = labels[~is_setosa]
+virginica = (labels == 'virginica')
+
+best_acc = -1.0
+best_fi = -1.0
+best_t = -1.0
+
+for fi in xrange(features.shape[1]):
+  # 各特徴量ごとに閾値の候補を生成する
+  thresh = features[:,fi].copy()
+  thresh.sort()
+
+  # 全ての閾値でテストする
+  for t in thresh:
+    pred = (features[:,fi] > t)
+    acc = (labels[pred] == 'virginica').mean()
+    if acc > best_acc:
+      best_acc = acc
+      best_if = fi
+      best_t = t
